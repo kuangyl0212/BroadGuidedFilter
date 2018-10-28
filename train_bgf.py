@@ -20,7 +20,7 @@ config.DATA_SET = 512
 
 
 # model
-config.model = BroadGuidedFilter(1*3*96*64, 100, 11000, 1*3*96*64)
+config.model = BroadGuidedFilter()
 
 
 def forward(imgs, config):
