@@ -82,7 +82,13 @@ def run(config, keep_vis=False):
                 continue
 
             t = time.time()
-
+            w = imgs[2].shape[2]
+            h = imgs[2].shape[3]
+            if (w * h != 64 * 96):
+                continue
+            #if (h != 96 and h != 64):
+            #    continue
+            print(imgs[2].size())
             y, gt = config.forward(imgs, config)
             loss = criterion(y, gt)
             # backward

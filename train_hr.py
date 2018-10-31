@@ -3,12 +3,12 @@ import argparse
 
 from train_base import *
 
-from module import DeepGuidedFilter, DeepGuidedFilterAdvanced
+from module import DeepGuidedFilter, DeepGuidedFilterAdvanced, BroadGuidedFilter
 
 parser = argparse.ArgumentParser(description='Train Deep Guided Filtering Networks')
 parser.add_argument('--task',  type=str, default='l0_smooth',          help='TASK')
 parser.add_argument('--name',  type=str, default='HR',                 help='NAME')
-parser.add_argument('--model', type=str, default='deep_guided_filter', help='model')
+parser.add_argument('--model', type=str, default='broad_guided_filter', help='model')
 args = parser.parse_args()
 
 config = copy.deepcopy(default_config)
@@ -23,6 +23,8 @@ if args.model == 'deep_guided_filter':
     config.model = DeepGuidedFilter()
 elif args.model == 'deep_guided_filter_advanced':
     config.model = DeepGuidedFilterAdvanced()
+elif args.model == 'broad_guided_filter':
+    config.model = BroadGuidedFilter()
 else:
     print('Not a valid model!')
     exit(-1)
